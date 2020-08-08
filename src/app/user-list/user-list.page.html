@@ -1,0 +1,262 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          User Listing
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">User Listing
+        <!-- <small>Subheading</small> -->
+    </h1>
+    <!-- <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">User Listing</li>
+    </ol> -->
+    <div class="margin-bottom-30">
+        <div class="row">
+            <div class="col-lg-3">
+                <h3>Filters</h3>
+            </div>
+            <div class="col-lg-9 text-right">
+                <span>
+                    <svg width="20" height="20">
+                        <rect width="20" height="20" style="fill:#e72f17;stroke-width:3;stroke:rgb(0,0,0)" />
+                    </svg>
+                    - not verified
+                 </span><br>
+                <span>
+                    <svg width="20" height="20">
+                        <rect width="20" height="20" style="fill:#469a49;stroke-width:3;stroke:rgb(0,0,0)" />
+                    </svg>
+                    -- its verified
+                </span>
+            </div>
+        </div>
+        <form>
+            <div class="row">
+                <div class="col-lg-2">    
+                    <select class="form-control">
+                        <option>Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+                <div class="col-lg-2">    
+                    <select class="form-control">
+                        <option>Select cast</option>
+                        <option>Hindu</option>
+                        <option>Muslim</option>
+                        <option>Christian</option>
+                    </select>
+                </div>
+                <div class="col-lg-2">    
+                    <select class="form-control">
+                        <option>Select Age</option>
+                        <option>18-22</option>
+                        <option>23-25</option>
+                        <option>25-27</option>
+                        <option>27-29</option>
+                        <option>29-31</option>
+                        <option>31-33</option>
+                        <option>33-35</option>
+                    </select>
+                </div>
+                <div class="col-lg-2">    
+                    <select class="form-control">
+                        <option>Mother Tongue</option>
+                        <option>Hindi</option>
+                        <option>Marathi</option>
+                        <option>Gujrati</option>
+                        <option>English</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a [routerLink]="['/portfolio']" >
+                    <span class="notify-badge-red" title="Document not verified"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    <img class="card-img-top porto" src="assets/images/porto/1.jpg" alt="">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a [routerLink]="['/portfolio']">Project One</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+                    
+                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a [routerLink]="['/portfolio']">
+                    <span class="notify-badge-green" title="Document verified"><i class="fa fa-check" aria-hidden="true"></i></span>
+                    <img class="card-img-top porto" src="assets/images/porto/2.jpg" alt="">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a [routerLink]="['/portfolio']">Project Two</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a [routerLink]="['/portfolio']">
+                    <span class="notify-badge-green" title="Document verified"><i class="fa fa-check" aria-hidden="true"></i></span>
+                    <img class="card-img-top porto" src="assets/images/porto/3.jpg" alt="">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a [routerLink]="['/portfolio']">Project Three</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
+                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a [routerLink]="['/portfolio']">
+                    <span class="notify-badge-red" title="Document not verified"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    <img class="card-img-top porto" src="assets/images/porto/4.jpg" alt="">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a [routerLink]="['/portfolio']">Project Four</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a [routerLink]="['/portfolio']">
+                    <span class="notify-badge-green" title="Document verified"><i class="fa fa-check" aria-hidden="true"></i></span>
+                    <img class="card-img-top porto" src="assets/images/porto/5.jpg" alt="">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a [routerLink]="['/portfolio']">Project Five</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a [routerLink]="['/portfolio']">
+                    <span class="notify-badge-red" title="Document not verified"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    <img class="card-img-top porto" src="assets/images/porto/6.jpg" alt="">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a [routerLink]="['/portfolio']">Project Six</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
+                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a [routerLink]="['/portfolio']">
+                    <span class="notify-badge-green" title="Document verified"><i class="fa fa-check" aria-hidden="true"></i></span>
+                    <img class="card-img-top porto" src="assets/images/porto/7.jpg" alt="">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a [routerLink]="['/portfolio']">Project Seven</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a [routerLink]="['/portfolio']">
+                    <span class="notify-badge-red" title="Document not verified"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    <img class="card-img-top porto" src="assets/images/porto/8.jpg" alt="">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a [routerLink]="['/portfolio']">Project Eight</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius adipisci dicta dignissimos neque animi ea, veritatis, provident hic consequatur ut esse! Commodi ea consequatur accusantium, beatae qui deserunt tenetur ipsa.</p>
+                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<footer class="py-5 bg-dark">
+  <div class="container footer">
+      <div class="row">
+          <div class="col-xs-4">
+              <ul>
+                  <li><a href="#" target="_blank">About us</a></li>
+                  <li>Careers</li>
+                  <li>Sitemap</li>
+                  <li>Blog</li>
+              </ul>
+          </div>
+          <div class="col-xs-4">
+              <ul>
+                  <li>Contact us</li>
+                  <li>FAQ</li>
+              </ul>
+          </div>
+          <div class="col-xs-4">
+              <ul>
+                  <li>Terms of service</li>
+                  <li>Privacy policy</li>
+              </ul>
+          </div>
+          
+          <p class="m-0 text-center text-white" style="padding-left: 10vw;">Copyright &copy; Ezy Marriage 2020</p>
+      </div>
+  </div>
+</footer>
+</ion-content>

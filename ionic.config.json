@@ -1,0 +1,7 @@
+{
+  "name": "ionic-multi-menu",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
