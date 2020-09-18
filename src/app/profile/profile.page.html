@@ -1,0 +1,502 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          Profile
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <h1 class="mt-4 mb-3">Profile</h1>
+
+      <!-- <div *ngFor="let item of gender_master">'
+        {{item.type}}
+      </div> -->
+
+    <div class="">
+      <form class="form-horizontal" role="form" style="padding: 20px;" enctype="multipart/form-data">
+            <div *ngIf="error" class="alert alert-danger">
+              {{error}}
+            </div>
+            <div *ngIf="success_message" class="alert alert-success">
+                {{success_message}}
+            </div>
+
+            <header class="profile-form__header">
+              <div class="profile-form__avatar-container image-upload">
+                  <label for="file-input">
+
+                          <div *ngIf="photo;else defaultDp">
+
+                              <img 
+                                  src="{{photo}}"
+                                  class="profile-form__avatar"
+                              />
+                          </div>
+                  
+                          <ng-template #defaultDp>
+                              
+                              <img 
+                                  src="../../assets/images/profile.png"
+                                  class="profile-form__avatar"
+                              />
+                          </ng-template>
+
+                  </label>
+                  <button (click)="uploadFileButton()"></button>
+                  <!-- <input id="file-input" type="file" (change)="uploadFile($event.target.files)" accept="image/*" /> -->
+                </div>
+                <h4 class="profile-form__title">{{name}}</h4>        
+              </header>
+            </form>
+            <form class="form-horizontal" role="form" style="padding: 20px;" (ngSubmit)="update_profile($event)">
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+                <div class="col-sm-9">
+                    <ion-input 
+                          type="text" 
+                          id="fullname"  
+                          name="fullname" 
+                          placeholder="Full Name" 
+                          class="form-control border-none"  
+                          value="{{fullname}}"
+                          autofocus 
+                      ></ion-input>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="email" id="email" name="email" placeholder="Email" class="form-control" name= "email" value="{{email}}" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Sex</label>
+                <div class="col-sm-9">
+                  <ion-item>
+                    <ion-label>Select Sex</ion-label>
+                    <ion-select id="sex" okText="Okay" cancelText="Dismiss"  value="{{sex}}" >
+                      <ion-select-option *ngFor="let item of gender_master" value="{{item.id}}">{{item.type}}</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Date of Birth</label>
+                <div class="col-sm-9">
+                  <ion-item>
+                    <ion-datetime value="{{dob}}" id="dob"></ion-datetime>
+
+                  </ion-item>
+
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Description</label>
+                <div class="col-sm-9">
+                  <ion-item>
+                    <ion-textarea placeholder="Enter information here..." id="description" value="{{description}}"></ion-textarea>
+                  </ion-item>
+
+                </div>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Height</label>
+                <div class="col-sm-9">
+                  <ion-item>
+                    <ion-input
+                        type="number" 
+                        id="height"  
+                        name="height" 
+                        placeholder="Height" 
+                        class="form-control border-none"  
+                        value="{{height}}"
+                    ></ion-input>
+                  </ion-item>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="col-sm-3 control-label">Relationship Status</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-label>Select Relationship Status</ion-label>
+                  <ion-select id="relationship_status" okText="Okay" cancelText="Dismiss" value="0">
+                    <ion-select-option *ngFor="let item of relationship_status_master" value="{{item.id}}">{{item.type}}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+              </div>
+            </div>
+
+             
+            <div class="form-group">
+              <label for="city" class="col-sm-3 control-label">City</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input 
+                      type="text" 
+                      id="city"  
+                      name="city" 
+                      placeholder="City" 
+                      class="form-control border-none"  
+                      value="{{city}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+             
+            <div class="form-group">
+              <label for="state" class="col-sm-3 control-label">State</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input 
+                      type="text" 
+                      id="state"  
+                      name="state" 
+                      placeholder="State" 
+                      class="form-control border-none"  
+                      value="{{state}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+             
+            <div class="form-group">
+              <label for="country" class="col-sm-3 control-label">country</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input 
+                      type="text" 
+                      id="country"  
+                      name="country" 
+                      placeholder="country" 
+                      class="form-control border-none"  
+                      value="{{country}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+             
+            <div class="form-group">
+              <label for="occupation" class="col-sm-3 control-label">Occupation</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input 
+                      type="text" 
+                      id="occupation"  
+                      name="occupation" 
+                      placeholder="Occupation" 
+                      class="form-control border-none"  
+                      value="{{occupation}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+             
+            <div class="form-group">
+              <label for="profile" class="col-sm-3 control-label">Profile</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input
+                      type="text" 
+                      id="profile"  
+                      name="profile" 
+                      placeholder="Profile" 
+                      class="form-control border-none"  
+                      value="{{profile}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="zodiac" class="col-sm-3 control-label">Zodiac</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-label>Select Zodiac</ion-label>
+                  <ion-select id="zodiac" okText="Okay" cancelText="Dismiss" value="0">
+                    <ion-select-option *ngFor="let item of zodiac_master" id value="{{item.id}}">{{item.type}}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+              </div>
+            </div>
+
+             
+            <div class="form-group">
+              <label for="religion" class="col-sm-3 control-label">Religion</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input
+                      type="text" 
+                      id="religion"  
+                      name="religion" 
+                      placeholder="Religion" 
+                      class="form-control border-none"  
+                      value="{{religion}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+             
+            <div class="form-group">
+              <label for="caste" class="col-sm-3 control-label">Caste</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input
+                      type="text" 
+                      id="caste"  
+                      name="caste" 
+                      placeholder="Caste" 
+                      class="form-control border-none"  
+                      value="{{caste}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+             
+            <div class="form-group">
+              <label for="mother_tongue" class="col-sm-3 control-label">Mother tongue</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input 
+                      type="text" 
+                      id="mother_tongue"  
+                      name="mother_tongue" 
+                      placeholder="Mother tongue" 
+                      class="form-control border-none"  
+                      value="{{mother_tongue}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="blood_group" class="col-sm-3 control-label">Blood group</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-label>Select Blood group</ion-label>
+                  <ion-select id="blood_group" okText="Okay" cancelText="Dismiss" value="0">
+                    <ion-select-option *ngFor="let item of blood_group_master" value="{{item.id}}">{{item.type}}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+              </div>
+            </div>
+
+             
+            <div class="form-group">
+              <label for="family_status" class="col-sm-3 control-label">Family status</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input
+                      type="text" 
+                      id="family_status"  
+                      name="family_status" 
+                      placeholder="Family status" 
+                      class="form-control border-none"  
+                      value="{{family_status}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+             
+            <div class="form-group">
+              <label for="no_of_family_members" class="col-sm-3 control-label">No. of family members</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input
+                      type="number" 
+                      id="no_of_family_members"  
+                      name="no_of_family_members" 
+                      placeholder="No. of family members" 
+                      class="form-control border-none"  
+                      value="{{no_of_family_members}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="physical_status" class="col-sm-3 control-label">Physical status</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input
+                      type="text" 
+                      id="physical_status"  
+                      name="physical_status" 
+                      placeholder="Physical status" 
+                      class="form-control border-none"  
+                      value="{{physical_status}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="complexion" class="col-sm-3 control-label">Complexion</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input
+                      type="text" 
+                      id="complexion"  
+                      name="complexion" 
+                      placeholder="Complexion" 
+                      class="form-control border-none"  
+                      value="{{complexion}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+
+
+
+            <div class="form-group">
+              <label for="blood_group" class="col-sm-3 control-label">Eating habits</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-label>Select Eating habits</ion-label>
+                  <ion-select id="eating_habits" okText="Okay" cancelText="Dismiss" value="0">
+                    <ion-select-option *ngFor="let item of eating_habits_master" value="{{item.id}}">{{item.type}}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="drinking_habits" class="col-sm-3 control-label">Drinking habits</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-label>Select Drinking habits</ion-label>
+                  <ion-select id="drinking_habits" okText="Okay" cancelText="Dismiss" value="0">
+                    <ion-select-option value="1">Yes</ion-select-option>
+                    <ion-select-option value="0">No</ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="smoking_habits" class="col-sm-3 control-label">Smoking habits</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-label>Select Smoking habits</ion-label>
+                  <ion-select id="smoking_habits" okText="Okay" cancelText="Dismiss" value="0">
+                    <ion-select-option value="1">Yes</ion-select-option>
+                    <ion-select-option value="0">No</ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="highest_education" class="col-sm-3 control-label">Highest education</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input
+                      type="text" 
+                      id="highest_education"  
+                      name="highest_education" 
+                      placeholder="Highest education" 
+                      class="form-control border-none"  
+                      value="{{highest_education}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="annual_income" class="col-sm-3 control-label">Annual income</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input
+                      type="text" 
+                      id="annual_income"  
+                      name="annual_income" 
+                      placeholder="Annual income" 
+                      class="form-control border-none"  
+                      value="{{annual_income}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="hobbies" class="col-sm-3 control-label">Hobbies</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-textarea id="hobbies" placeholder="Hobbies" value="{{hobbies}}"></ion-textarea>
+                </ion-item>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="interests" class="col-sm-3 control-label">Interests</label>
+              <div class="col-sm-9">
+                <ion-item>
+                 <ion-textarea id="interests" placeholder="Interests" value="{{interests}}"></ion-textarea>
+                </ion-item>
+                
+
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="profile_for" class="col-sm-3 control-label">Profile for</label>
+              <div class="col-sm-9">
+                <ion-item>
+                  <ion-input 
+                      type="text" 
+                      id="profile_for"  
+                      name="profile_for" 
+                      placeholder="Profile for" 
+                      class="form-control border-none"  
+                      value="{{profile_for}}"
+                  ></ion-input>
+                </ion-item>
+
+              </div>
+            </div>
+
+
+            
+            <button type="submit" class="btn btn-primary btn-block" style="width: 300px;">Register</button>
+        </form> <!-- /form -->
+    </div>
+  </div>
+</ion-content>

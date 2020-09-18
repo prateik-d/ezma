@@ -16,11 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
   {
-    path: 'home2',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
     path: 'about-us',
     loadChildren: () => import('./about-us/about-us.module').then( m => m.AboutUsPageModule)
   },
@@ -29,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import('./user-list/user-list.module').then( m => m.UserListPageModule)
   },
   {
-    path: 'portfolio',
+    path: 'user/:id',
     loadChildren: () => import('./portfolio/portfolio.module').then( m => m.PortfolioPageModule)
   },
   {
@@ -43,6 +38,14 @@ const routes: Routes = [
   {
     path: 'registration',
     loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'request',
+    loadChildren: () => import('./request/request.module').then( m => m.RequestPageModule)
   },
 
 ];

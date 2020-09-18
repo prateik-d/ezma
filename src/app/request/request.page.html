@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          User Request
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">User Request
+        <!-- <small>Subheading</small> -->
+    </h1>
+
+    <div *ngIf="error" class="alert alert-danger">
+      {{error}}
+    </div>
+    <div *ngIf="success_message" class="alert alert-success">
+        {{success_message}}
+    </div>
+
+    <ion-card class="right">
+      <ion-card-content *ngFor="let user of users">
+        <!-- Request User -->
+        <a [routerLink]="['/user/', user.id]">
+          {{user.fullname}}
+        </a>
+        <div class="ion-text-end">
+          <span><ion-button color="secondary" (click)="accept(user.user_id)">Accept</ion-button></span>
+          <span><ion-button color="secondary" (click)="reject(user.user_id)">Reject</ion-button></span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    
+
+  </div>
+
+
+</ion-content>

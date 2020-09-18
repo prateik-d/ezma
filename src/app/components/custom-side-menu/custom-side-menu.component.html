@@ -33,9 +33,19 @@
                             </ion-label>
                             <ion-badge slot="end" *ngIf="child?.badge">{{ child.badge }}</ion-badge>
                         </ion-item>
-                    </ion-menu-toggle>
+                    </ion-menu-toggle>            
                 </ng-template>
             </div>
         </ng-template>
     </ng-template>
+</ion-list>
+<ion-list *ngIf="isLogin === '1'">
+    <ion-menu-toggle auto-hide="false" >
+        <ion-item (click)="logout()">
+            <ion-icon name="log-out"  color="warning"></ion-icon>
+            <ion-label class="logout-text">
+                Logout
+            </ion-label>
+        </ion-item>
+    </ion-menu-toggle>
 </ion-list>

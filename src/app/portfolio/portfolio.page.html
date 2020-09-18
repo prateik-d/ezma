@@ -13,8 +13,8 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Portfolio 
-      <!-- <small>Subheading</small> -->
+    <h1 class="mt-4 mb-3">Portfolio <br>
+      <small style="color:red" *ngIf="user.verified === null">This profile is not verified by us yet.</small>
     </h1>
 
     <!-- <ol class="breadcrumb">
@@ -27,20 +27,36 @@
     <!-- Portfolio Item Row -->
     <div class="row">
 
-      <div class="col-md-8">
-        <img class="img-fluid" src="assets/images/individual/1.jpg" alt="">
+      <div class="col-md-8" >
+        <div *ngIf="user.dp === null else dp">
+          <img class="img-fluid" src="assets/images/profile.png" alt="">
+        </div>
+        <ng-template #dp>
+          <img class="card-img-top porto" src="assets/images/individual/1.jpg" alt="">
+        </ng-template>
       </div>
-
+      
       <div class="col-md-4">
         <h3 class="my-3">User Description</h3>
-        <p>I am IT professional based in Pune, working in as a senior software engineer.I have supportive parents, I believe in accepting the variables and live with them happily. </p>
+        <h4>{{user.fullname | titlecase }}</h4>
+        <p>{{user.description}}</p>
         <h3 class="my-3">User Details</h3>
-        <p><i class="fa fa-user"></i> 27 years, 5'6, Aquarious</p>
-        <p><i class="fa fa-birthday-cake"></i> Born on **/**/****</p>
-        <p><i class="fa fa-mars-double"></i> Single</p>
-        <p><i class="fa fa-map-marker"></i> Pune, Maharashtra, India</p>
-        <p><i class="fa fa-briefcase"></i> Software Developer</p>
-        <p><i class="fa fa-cutlery"></i>Vegiterian</p>
+        <p><i class="fa fa-user"></i> {{user.height}}, {{user.zodiac}}</p>
+        <p><i class="fa fa-birthday-cake"></i> Born on : {{user.dob}}</p>
+        <p><i class="fa fa-mars-double"></i> {{user.relationship_status}}</p>
+        <p><i class="fa fa-map-marker"></i> {{user.city | titlecase}}, {{user.state | titlecase}}, {{user.country | titlecase}}</p>
+        <p><i class="fa fa-briefcase"></i> {{user.occupation | titlecase}}, {{user.profile | titlecase}}</p>
+        <p><i class="fa fa-cutlery"></i> {{user.eating_habits}}</p>
+        <p><i class="fa fa-tint"></i> Blood Group : {{user.blood_group}}</p>
+        <p><i class="fa fa-graduation-cap"></i> Highest Education : {{user.highest_education}}</p>
+        <p><i class="fa fa-smile-o"></i> Hobbies : {{user.hobbies}}</p>
+        <p><i class="fa fa-smile-o"></i> Interest : {{user.interest}}</p>
+        <p><i class="fa fa-female"></i> Mother Tongue : {{user.mother_tongue}}</p>
+        <p><i class="fa fa-users"></i> No. of family memberse : {{user.no_of_family_members}}</p>
+        <p><i class="fa fa-id-badge"></i> Religion : {{user.religion}}</p>
+        <p><i class="fa fa-id-card"></i> caste : {{user.caste}}</p>
+        <p><i class="fa fa-user-circle"></i> Complexion : {{user.complexion}}</p>
+        <p><i class="fa fa-money"></i> Annual Income : {{user.annual_income}}</p>
       </div>
 
     </div>

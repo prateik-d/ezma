@@ -21,6 +21,13 @@
         </li>
         <li class="breadcrumb-item active">User Listing</li>
     </ol> -->
+    <div *ngIf="error" class="alert alert-danger">
+        {{error}}
+    </div>
+    <div *ngIf="success_message" class="alert alert-success">
+          {{success_message}}
+    </div>
+
     <div class="margin-bottom-30">
         <div class="row">
             <div class="col-lg-3">
@@ -41,6 +48,7 @@
                 </span>
             </div>
         </div>
+
         <form>
             <div class="row">
                 <div class="col-lg-2">    
@@ -84,191 +92,44 @@
         </form>
     </div>
     <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" *ngFor="let user of users">
             <div class="card h-100">
-                <a [routerLink]="['/portfolio']" >
-                    <span class="notify-badge-red" title="Document not verified"><i class="fa fa-times" aria-hidden="true"></i></span>
-                    <img class="card-img-top porto" src="assets/images/porto/1.jpg" alt="">
+                <a [routerLink]="['/user/', user.id]" >
+                    <div *ngIf="user.verified === 1; else notVerified">
+                        <span class="notify-badge-green"><i class="fa fa-check" aria-hidden="true"></i></span>
+                    </div>
+                    <ng-template #notVerified>
+                        <span class="notify-badge-red"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    </ng-template>
+                    <span *ngIf="user.dp === null else dp">
+                        <img class="card-img-top porto" src="assets/images/profile.png" alt="">
+                    </span>
+                    <ng-template #dp>
+                        <img class="card-img-top porto" src="assets/images/porto/1.jpg" alt="">
+                    </ng-template>
                 </a>
                 <div class="card-body">
+
                     <h4 class="card-title">
-                        <a [routerLink]="['/portfolio']">User One</a>
+                        <a [routerLink]="['/user/', user.id]">{{user.fullname | titlecase}}</a>
                     </h4>
-                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p> -->
+
                     <div class="card-text">
-                        <p><i class="fa fa-user"></i> 27 years, 5'6, Aquarious</p>
-                        <p><i class="fa fa-birthday-cake"></i> Born on **/**/****</p>
-                        <p><i class="fa fa-mars-double"></i> Single</p>
-                        <p><i class="fa fa-map-marker"></i> Pune, Maharashtra, India</p>
-                        <p><i class="fa fa-briefcase"></i> Software Developer</p>
-                        <p><i class="fa fa-cutlery"></i>Vegiterian</p>
+                        <p><i class="fa fa-user"></i> {{user.height}}, {{user.zodiac}}</p>
+                        <p><i class="fa fa-birthday-cake"></i> Born on {{user.dob}}</p>
+                        <p><i class="fa fa-mars-double"></i> {{user.relationship_status}}</p>
+                        <p><i class="fa fa-map-marker"></i> {{user.city | titlecase}}, {{user.state | titlecase}}, {{user.country | titlecase}}</p>
+                        <p><i class="fa fa-briefcase"></i> {{user.profile | titlecase}}</p>
+                        <p><i class="fa fa-cutlery"></i> {{user.eating_habits}}</p>
                     </div>
-                    
-                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
+
+                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" (click)="connect(user.id)" >Connect</a>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a [routerLink]="['/portfolio']">
-                    <span class="notify-badge-green" title="Document verified"><i class="fa fa-check" aria-hidden="true"></i></span>
-                    <img class="card-img-top porto" src="assets/images/porto/2.jpg" alt="">
-                </a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a [routerLink]="['/portfolio']">User Two</a>
-                    </h4>
-                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p> -->
-                    <div class="card-text">
-                        <p><i class="fa fa-user"></i> 25 years, 5'2, Scorpion</p>
-                        <p><i class="fa fa-birthday-cake"></i> Born on **/**/****</p>
-                        <p><i class="fa fa-mars-double"></i> Single</p>
-                        <p><i class="fa fa-map-marker"></i> Pune, Maharashtra, India</p>
-                        <p><i class="fa fa-briefcase"></i> Web Developer</p>
-                        <p><i class="fa fa-cutlery"></i>Vegiterian</p>
-                    </div>
-                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a [routerLink]="['/portfolio']">
-                    <span class="notify-badge-green" title="Document verified"><i class="fa fa-check" aria-hidden="true"></i></span>
-                    <img class="card-img-top porto" src="assets/images/porto/3.jpg" alt="">
-                </a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a [routerLink]="['/portfolio']">User Three</a>
-                    </h4>
-                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p> -->
-                    <div class="card-text">
-                        <p><i class="fa fa-user"></i> 22 years, 5'4, Gemini</p>
-                        <p><i class="fa fa-birthday-cake"></i> Born on **/**/****</p>
-                        <p><i class="fa fa-mars-double"></i> Single</p>
-                        <p><i class="fa fa-map-marker"></i> Kolhapur, Maharashtra, India</p>
-                        <p><i class="fa fa-briefcase"></i> Marketing Manager</p>
-                        <p><i class="fa fa-cutlery"></i>Non-Vegiterian</p>
-                    </div>
-                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a [routerLink]="['/portfolio']">
-                    <span class="notify-badge-red" title="Document not verified"><i class="fa fa-times" aria-hidden="true"></i></span>
-                    <img class="card-img-top porto" src="assets/images/porto/4.jpg" alt="">
-                </a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a [routerLink]="['/portfolio']">User Four</a>
-                    </h4>
-                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p> -->
-                    <div class="card-text">
-                        <p><i class="fa fa-user"></i> 27 years, 5'4, Libra</p>
-                        <p><i class="fa fa-birthday-cake"></i> Born on **/**/****</p>
-                        <p><i class="fa fa-mars-double"></i> Single</p>
-                        <p><i class="fa fa-map-marker"></i> Kolhapur, Maharashtra, India</p>
-                        <p><i class="fa fa-briefcase"></i> Sales Manager</p>
-                        <p><i class="fa fa-cutlery"></i>Vegiterian</p>
-                    </div>
-                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a [routerLink]="['/portfolio']">
-                    <span class="notify-badge-green" title="Document verified"><i class="fa fa-check" aria-hidden="true"></i></span>
-                    <img class="card-img-top porto" src="assets/images/porto/5.jpg" alt="">
-                </a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a [routerLink]="['/portfolio']">User Five</a>
-                    </h4>
-                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p> -->
-                    <div class="card-text">
-                        <p><i class="fa fa-user"></i> 22 years, 5'4, Gemini</p>
-                        <p><i class="fa fa-birthday-cake"></i> Born on **/**/****</p>
-                        <p><i class="fa fa-mars-double"></i> Single</p>
-                        <p><i class="fa fa-map-marker"></i> Kolhapur, Maharashtra, India</p>
-                        <p><i class="fa fa-briefcase"></i> Marketing Manager</p>
-                        <p><i class="fa fa-cutlery"></i>Non-Vegiterian</p>
-                    </div>
-                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a [routerLink]="['/portfolio']">
-                    <span class="notify-badge-red" title="Document not verified"><i class="fa fa-times" aria-hidden="true"></i></span>
-                    <img class="card-img-top porto" src="assets/images/porto/6.jpg" alt="">
-                </a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a [routerLink]="['/portfolio']">User Six</a>
-                    </h4>
-                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p> -->
-                    <div class="card-text">
-                        <p><i class="fa fa-user"></i> 27 years, 5'4, Libra</p>
-                        <p><i class="fa fa-birthday-cake"></i> Born on **/**/****</p>
-                        <p><i class="fa fa-mars-double"></i> Single</p>
-                        <p><i class="fa fa-map-marker"></i> Kolhapur, Maharashtra, India</p>
-                        <p><i class="fa fa-briefcase"></i> Sales Manager</p>
-                        <p><i class="fa fa-cutlery"></i>Vegiterian</p>
-                    </div>
-                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a [routerLink]="['/portfolio']">
-                    <span class="notify-badge-green" title="Document verified"><i class="fa fa-check" aria-hidden="true"></i></span>
-                    <img class="card-img-top porto" src="assets/images/porto/7.jpg" alt="">
-                </a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a [routerLink]="['/portfolio']">User Seven</a>
-                    </h4>
-                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p> -->
-                    <div class="card-text">
-                        <p><i class="fa fa-user"></i> 25 years, 5'2, Scorpion</p>
-                        <p><i class="fa fa-birthday-cake"></i> Born on **/**/****</p>
-                        <p><i class="fa fa-mars-double"></i> Single</p>
-                        <p><i class="fa fa-map-marker"></i> Pune, Maharashtra, India</p>
-                        <p><i class="fa fa-briefcase"></i> Web Developer</p>
-                        <p><i class="fa fa-cutlery"></i>Vegiterian</p>
-                    </div>
-                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a [routerLink]="['/portfolio']">
-                    <span class="notify-badge-red" title="Document not verified"><i class="fa fa-times" aria-hidden="true"></i></span>
-                    <img class="card-img-top porto" src="assets/images/porto/8.jpg" alt="">
-                </a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a [routerLink]="['/portfolio']">User Eight</a>
-                    </h4>
-                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius adipisci dicta dignissimos neque animi ea, veritatis, provident hic consequatur ut esse! Commodi ea consequatur accusantium, beatae qui deserunt tenetur ipsa.</p> -->
-                    <div class="card-text">
-                        <p><i class="fa fa-user"></i> 27 years, 5'6, Aquarious</p>
-                        <p><i class="fa fa-birthday-cake"></i> Born on **/**/****</p>
-                        <p><i class="fa fa-mars-double"></i> Single</p>
-                        <p><i class="fa fa-map-marker"></i> Pune, Maharashtra, India</p>
-                        <p><i class="fa fa-briefcase"></i> Software Developer</p>
-                        <p><i class="fa fa-cutlery"></i>Vegiterian</p>
-                    </div>
-                    <a class="btn btn-lg btn-secondary btn-block connect-to-action" [routerLink]="['/portfolio']" >Connect</a>
-                </div>
-            </div>
-        </div>
+
+        
     </div>
     <!-- Pagination -->
     <ul class="pagination justify-content-center">
