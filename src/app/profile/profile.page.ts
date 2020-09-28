@@ -46,6 +46,7 @@ export class ProfilePage implements OnInit {
   hobbies:any;
   interests:any;
   profile_for:any;
+  dp:any;
 
   gender_master:any;
   blood_group_master:any;
@@ -132,6 +133,7 @@ export class ProfilePage implements OnInit {
           this.hobbies = data.data.hobbies;
           this.interests = data.data.interests;
           this.profile_for = data.data.profile_for;
+          this.dp = data.data.dp;
           
           // console.log(this.id);
         });

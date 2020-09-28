@@ -14,6 +14,7 @@ export class UserListPage implements OnInit {
   users: any;
   user_id: any;
   success_message: any;
+  error: any;
   
 
   constructor(

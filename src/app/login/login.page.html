@@ -15,7 +15,7 @@
     <h1 class="mt-4 mb-3">Login</h1>
 
     <div class="">
-        <form method="POST" class="form-horizontal" role="form" style="padding: 20px;" (ngSubmit)="login($event)">
+        <form method="POST" class="form-horizontal" role="form" style="padding: 20px;" (ngSubmit)="login()">
             <div *ngIf="error" class="alert alert-danger">
                 {{error}}
             </div>

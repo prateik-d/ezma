@@ -30,10 +30,10 @@
               <div class="profile-form__avatar-container image-upload">
                   <label for="file-input">
 
-                          <div *ngIf="photo;else defaultDp">
+                          <div *ngIf="dp;else defaultDp">
 
                               <img 
-                                  src="{{photo}}"
+                                  src="{{dp}}"
                                   class="profile-form__avatar"
                               />
                           </div>
@@ -50,7 +50,7 @@
                   <button (click)="uploadFileButton()"></button>
                   <!-- <input id="file-input" type="file" (change)="uploadFile($event.target.files)" accept="image/*" /> -->
                 </div>
-                <h4 class="profile-form__title">{{name}}</h4>        
+                <!-- <h4 class="profile-form__title">{{name}}</h4>         -->
               </header>
             </form>
             <form class="form-horizontal" role="form" style="padding: 20px;" (ngSubmit)="update_profile($event)">
